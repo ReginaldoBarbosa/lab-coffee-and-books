@@ -54,5 +54,8 @@ app.locals.title = 'Coffee And Books';
 const index = require('./routes/index');
 app.use('/', index);
 
+const apiRoutes = require('./routes/api');
+app.use('/api', apiRoutes);
+
 
 module.exports = app;

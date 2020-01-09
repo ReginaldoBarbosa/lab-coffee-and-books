@@ -1,2 +1,19 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
+    <a href='/add'>ADD PLACE</a>
+<div id="map"></div>
+<div class="container">
+  <div class="bookstores">
+    <h2>Bookstores</h2>
+    {{#each xxx}}
+    <h4>{{this.name}}</h4>
+    <a href='{{this.id}}/edit'>EDIT</a>
+    <a href='{{this.id}}/delete'>DELETE</a>
+    <hr>
+    {{/each}}
+
+  </div>
+  <div class="coffeeshop">
+    <h2>Coffeshop</h2>
+  </div>
+</div>
