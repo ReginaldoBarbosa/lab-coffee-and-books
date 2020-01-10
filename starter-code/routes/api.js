@@ -1,11 +1,14 @@
 const express = require('express');
-const router = express.Router();
 const Places = require('../models/place');
 
-router.get('/', (req, res, next) => {
+const router = express.Router();
+
+router.get('/', (req, res) => {
   Places.find()
-  .then(response => res.json(response))
-  .catch(err => console.log(err))
-})
+    .then((response) => res.json(response))
+    .catch((err) => {
+      throw new Error(err);
+    });
+});
 
 module.exports = router;
