@@ -12,7 +12,7 @@ const placeSchema = new Schema({
   }
 );
 
-const Places = mongoose.model('Places', placeSchema);
 placeSchema.index({ location: '2dsphere' });
+const Places = mongoose.model('Places', placeSchema);
 
 module.exports = Places;

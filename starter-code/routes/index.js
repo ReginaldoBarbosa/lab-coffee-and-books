@@ -1,10 +1,24 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 const Places = require('../models/place');
 
-/* GET home page */
+// /* GET home page */
+
 router.get('/', (req, res, next) => {
-  res.render('index');
+  let isCoffeeShop = [];
+  let isBookstore = [];
+  Places.find()
+  .then(allPlaces => {
+    allPlaces.forEach((elem) => {
+      if (elem.type === 'coffee-shop') {
+        isCoffeeShop.push(elem);
+      } else {
+        isBookstore.push(elem);
+      }
+    })
+    // console.log(allPlaces);
+    res.render('index', { allPlaces, isCoffeeShop, isBookstore });
+  })
 });
 
 router.get('/:id/edit', (req, res, next) => {
@@ -27,7 +41,5 @@ router.post('/add', (req, res, next) => {
     .then(e => console.log("uhuu ", e))
     .catch()
 });
-
-
 
 module.exports = router;
